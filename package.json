@@ -1,0 +1,19 @@
+{
+  "name": "tradingview-print",
+  "version": "1.0.0",
+  "description": "Capture TradingView charts and compose them into printable PDFs",
+  "main": "print-charts.js",
+  "bin": {
+    "tv-print": "./print-charts.js"
+  },
+  "scripts": {
+    "start": "node print-charts.js",
+    "print": "node print-charts.js"
+  },
+  "keywords": ["tradingview", "chart", "pdf", "print"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^24.37.5"
+  }
+}
