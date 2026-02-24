@@ -118,3 +118,33 @@ To disable auto-printing:
 ```json
 { "output": { "print": false } }
 ```
+
+## Crontab
+
+To run tv-print on a schedule, add an entry to your crontab:
+
+```bash
+crontab -e
+```
+
+Example — generate and print charts every day at 8:00 AM:
+
+```cron
+0 8 * * * cd ~/Projects/tradingview-print-cron && /usr/bin/node print-charts.js >> /tmp/tv-print.log 2>&1
+```
+
+Common schedules:
+
+| Schedule | Cron expression |
+|---|---|
+| Every day at 8 AM | `0 8 * * *` |
+| Weekdays at 8 AM | `0 8 * * 1-5` |
+| Every 6 hours | `0 */6 * * *` |
+| Every Monday at 9 AM | `0 9 * * 1` |
+
+**Tips:**
+
+- Use absolute paths for both `node` and the project directory — cron doesn't load your shell profile
+- Find your Node path with `which node`
+- Redirect output to a log file (`>> /tmp/tv-print.log 2>&1`) to debug issues
+- Verify your crontab is saved with `crontab -l`
